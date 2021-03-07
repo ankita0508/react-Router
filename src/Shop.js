@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Shop() {
   const [shopItems, setShopItems] = useState([]);
@@ -25,7 +26,11 @@ export default function Shop() {
   return (
     <div>
       {shopItems.map(item => {
-        return <h1 key={item.itemId}>{item.item.name}</h1>;
+        return (
+          <h1 key={item.itemId}>
+            <Link to={`/shop/${item.itemId}`}>{item.item.name}</Link>
+          </h1>
+        );
       })}
     </div>
   );
